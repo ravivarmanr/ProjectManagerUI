@@ -1,3 +1,80 @@
-<p>
-  add-user works!
-</p>
+<!-- main app container -->
+
+<div class="container cont-left-margin">
+  <!-- <div class="col-md-6 offset-md-3"> -->
+  <div class="page-title">Add User</div>
+  <form class="form-horizontal" [formGroup]="AddUserForm" #formDir="ngForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off" >
+
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="FirstName" class="form-control" required maxlength="30">
+        <mat-error *ngIf="FirstName?.required">
+          First Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="LastName" class="form-control" required maxlength="30">
+        <mat-error *ngIf="LastName?.required">
+          Last Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Employee ID" formControlName="EmpId" class="form-control" required minlength="6"
+          maxlength="6">
+        <mat-error *ngIf="EmpId?.required">
+          Employee ID is required
+        </mat-error>
+        <mat-error *ngIf="EmpId?.minlength && !EmpId?.required">
+          Employee Id needs to be 6 characters length
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit">{{SubmitButton}}</button>
+      <button mat-raised-button color="primary" type="reset" (click)="resetForm()">Reset</button>
+    </div>
+
+  </form>
+
+  <mat-divider class="margin-div"></mat-divider>
+
+  <div class="row">
+    <div class="col-md-4">
+    <mat-form-field class="search_field">
+      <input matInput placeholder="Search User" [(ngModel)]="searchTerm" />
+    </mat-form-field>
+  </div>
+  <div class="col-md-8 button-row">
+    <button mat-raised-button color="primary" (click)="sortList('FirstName')" >First Name</button>
+    <button mat-raised-button color="primary" (click)="sortList('LastName')">Last Name</button>
+    <button mat-raised-button color="primary" (click)="sortList('EmpId')">Employee Id</button>
+  </div>
+  </div>
+
+  <div id="divUserList">
+    <mat-list>
+      <mat-list-item class="pading-bottom" *ngFor="let user of userList | filter : searchTerm | orderby: path : order" >
+        <div class="col-md-6 col-sm-12 pading-bottom">
+          <div class="row">
+            <h4 mat-line class="lst-itm-header">First Name</h4>
+            <p mat-line>{{user.FirstName}}</p>
+          </div>
+          <div class="row">
+            <h4 mat-line class="lst-itm-header">Last Name</h4>
+            <p mat-line>{{user.LastName}}</p>
+          </div>
+          <div class="row">
+            <h4 mat-line class="lst-itm-header">Employee Id</h4>
+            <p mat-line>{{user.EmpId}}</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 lst-item-button">
+          <button mat-raised-button color="primary" (click)="editUser(user)" class="btn-row">Edit</button>
+          <button mat-raised-button color="primary" (click)="deleteUser(user)" class="btn-row">Delete</button>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

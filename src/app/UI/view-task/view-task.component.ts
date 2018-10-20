@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../Services/shared.service';
+import { Task } from 'src/app/Models/task';
 
 @Component({
   selector: 'app-view-task',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewTaskComponent implements OnInit {
 
-  constructor() { }
+Tasks: Task[];
+
+  constructor(private TaskDetailService: SharedService) { }
 
   ngOnInit() {
+    this.LoadTaskDetails();
+    console.log(this.Tasks);
+  }
+
+  LoadTaskDetails(): void{
+    this.TaskDetailService.getTaskList()
+    .subscribe( data => {
+      this.Tasks = data;
+    });
   }
 
 }
