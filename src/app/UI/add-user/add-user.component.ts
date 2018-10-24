@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/Services/shared.service';
 import { User } from 'src/app/Models/user';
-// import {MaterialModule} from '../../material';
 
 @Component({
   selector: 'app-add-user',
@@ -25,14 +24,9 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
     this.getUserList();
     this.buildAddForm();
-    // this.AddUserForm = this.formBuilder.group({
-    //   UserId: [''],
-    //   FirstName: ['', Validators.required],
-    //   LastName: ['', Validators.required],
-    //   EmpId: ['', Validators.required],
-    // });
   }
 
+  //for sorting
   sortList(prop: string){
     // console.log(prop);
     this.path = prop.split('.');
@@ -126,8 +120,8 @@ export class AddUserComponent implements OnInit {
   updateUser(userValue: any) {
     this.addUserService.updateUser(userValue)
       .subscribe(data => {
-        this.resetForm();
         console.log('updated the data');
+        this.resetForm();
       });
     return;
   }

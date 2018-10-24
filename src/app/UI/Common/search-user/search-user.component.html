@@ -1,0 +1,31 @@
+<div class="page-title">Search User</div>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-md-5">
+      <input class="form-control" type="text" placeholder="Search User" [(ngModel)]="searchTerm" />
+    </div>
+  </div>
+  <br/>
+   <table class="table table-bordered table-responsive table-condensed">
+    <thead class="light-blue">
+      <tr>
+        <th>Select</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Employee Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList | filter: searchTerm">
+        <td>
+          <button class="btn btn-primary" (click)="selectUser(user)">
+            Select</button>
+        </td>
+        <td>{{user.FirstName}}</td>
+        <td>{{user.LastName}}</td>
+        <td>{{user.EmpId}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-dialog-content>

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedService } from 'src/app/Services/shared.service';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { OrderbyPipe } from './Pipes/orderby.pipe';
+import { SearchUserComponent } from './UI/Common/search-user/search-user.component';
 
 
 
@@ -18,7 +19,8 @@ import { OrderbyPipe } from './Pipes/orderby.pipe';
     AppComponent,
     routingComponents,
     FilterPipe,
-    OrderbyPipe
+    OrderbyPipe,
+    SearchUserComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { OrderbyPipe } from './Pipes/orderby.pipe';
     FormsModule
   ],
   providers: [SharedService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SearchUserComponent]
 })
 export class AppModule { }
