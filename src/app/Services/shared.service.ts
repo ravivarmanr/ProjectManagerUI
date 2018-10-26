@@ -71,7 +71,7 @@ export class SharedService {
 
   addTask(task: Task) {
     console.log(task);
-    return this.http.post(this.baseUrl + '/Add', task);
+    return this.http.post(this.baseUrl + '/AddTask', task);
   }
 
   
