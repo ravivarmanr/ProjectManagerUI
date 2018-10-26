@@ -1,0 +1,28 @@
+<div class="page-title">Search Project</div>
+<br>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-md-5">
+      <input class="form-control" type="text" placeholder="Search Project" [(ngModel)]="searchTerm" />
+    </div>
+  </div>
+  <br/>
+   <table class="table table-bordered table-responsive table-condensed">
+    <thead class="light-blue">
+      <tr>
+        <th>Select</th>
+        <th>Project Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projectList | filter: searchTerm">
+        <td>
+          <button class="btn btn-primary" (click)="selectProject(project)">
+            Select</button>
+        </td>
+        <td>{{project.ProjectName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-dialog-content>

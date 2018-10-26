@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Task } from '../Models/task';
 import { User } from 'src/app/Models/user';
 import { Project } from 'src/app/Models/project';
+import { Parent } from 'src/app/Models/parent';
 
 @Injectable({
   providedIn: 'root'
@@ -68,10 +69,10 @@ export class SharedService {
     return this.http.get<Task[]>(this.baseUrl + '/GetAllTasks');
   }
 
-  // createTask(task: Task) {
-  //   console.log(task);
-  //   return this.http.post(this.baseUrl + '/Add', task);
-  // }
+  addTask(task: Task) {
+    console.log(task);
+    return this.http.post(this.baseUrl + '/Add', task);
+  }
 
   
   // getTaskById(id): Observable<Task> {
@@ -88,5 +89,9 @@ export class SharedService {
   //   return this.http.get<Task>(this.baseUrl+'/End/'+id);
   // }
 
+  getParentList(){
+    console.log(this.baseUrl);
+    return this.http.get<Parent[]>(this.baseUrl + '/GetAllParentTasks');
+  }
 
 }

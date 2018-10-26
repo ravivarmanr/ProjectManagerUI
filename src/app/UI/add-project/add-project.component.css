@@ -62,3 +62,10 @@
 .edit-button{
     margin-bottom: 10px;
 }
+.lst-bg-color{
+background-color: aliceblue;
+}
+.priority-style{
+    margin-left: 10px;
+    padding: inherit;
+}

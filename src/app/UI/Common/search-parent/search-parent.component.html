@@ -1,0 +1,28 @@
+<div class="page-title">Search Parent Task</div>
+<br>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-md-5">
+      <input class="form-control" type="text" placeholder="Search Parent Task" [(ngModel)]="searchTerm" />
+    </div>
+  </div>
+  <br/>
+   <table class="table table-bordered table-responsive table-condensed">
+    <thead class="light-blue">
+      <tr>
+        <th>Select</th>
+        <th>Parent Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parent of parentList | filter: searchTerm">
+        <td>
+          <button class="btn btn-primary" (click)="selectParent(parent)">
+            Select</button>
+        </td>
+        <td>{{parent.ParentTask}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</mat-dialog-content>

@@ -82,8 +82,8 @@
   <div id="divProjectList">
     <mat-list>
       <mat-list-item class="pading-bottom" *ngFor="let project of projectList | filter : searchTerm | orderby: path : order">
-        <div class="col-md-8 col-sm-12 pading-bottom">
-          <div class="row col-md-12">
+        <div class="col-md-8 col-sm-12 pading-bottom lst-bg-color">
+          <div class="row col-md-12 top-padding">
             <h4 mat-line class="lst-itm-header">Project</h4>
             <p mat-line>{{project.ProjectName}}</p>
           </div>
@@ -108,7 +108,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 col-sm-12 pading-bottom">
+        <div class="col-md-2 col-sm-12 pading-bottom lst-bg-color priority-style">
           <h4 mat-line class="lst-itm-header-priority">Priority</h4>
           <p mat-line>{{project.ProjectPriority}}</p>
         </div>

@@ -11,6 +11,8 @@ import { SharedService } from 'src/app/Services/shared.service';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { OrderbyPipe } from './Pipes/orderby.pipe';
 import { SearchUserComponent } from './UI/Common/search-user/search-user.component';
+import { SearchProjectComponent } from './UI/Common/search-project/search-project.component';
+import { SearchParentComponent } from './UI/Common/search-parent/search-parent.component';
 
 
 
@@ -20,7 +22,9 @@ import { SearchUserComponent } from './UI/Common/search-user/search-user.compone
     routingComponents,
     FilterPipe,
     OrderbyPipe,
-    SearchUserComponent
+    SearchUserComponent,
+    SearchProjectComponent,
+    SearchParentComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,6 @@ import { SearchUserComponent } from './UI/Common/search-user/search-user.compone
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],
-  entryComponents: [SearchUserComponent]
+  entryComponents: [SearchUserComponent, SearchProjectComponent, SearchParentComponent]
 })
 export class AppModule { }
