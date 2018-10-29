@@ -1,0 +1,76 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+.example-container > * {
+    width: 100%;
+  } 
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.padding-bottom{
+    padding-bottom: 10px;
+}
+.parm-width{
+    width: 100%;
+}
+
+.search_field{
+    margin-right: 8px;
+    width: 100%;
+}
+
+.margin-div{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-top-width: 4px;
+    margin-top: 30px;
+} 
+
+.lst-item-button{
+    padding-bottom: 10px;
+    /* flex-wrap: inherit; */
+}
+.btn-row{
+    margin-right: 8px;   
+}
+
+.lst-itm-header{
+    width: 30%;
+    font-size: 15px;
+}
+
+.lst-itm-header-priority{
+    font-size: 15px;
+}
+
+.cont-left-margin{
+    margin-left: 0;
+}
+
+.top-padding{
+    padding-top: 15px;
+}
+.search-manager{
+    padding-top: 30px;
+}
+.edit-button{
+    margin-bottom: 10px;
+}
+.lst-bg-color{
+background-color: aliceblue;
+}
+.priority-style{
+    margin-left: 10px;
+    padding: inherit;
+}
+
+.label-sort{
+    margin-right: 8px;      
+    padding: 7px
+}

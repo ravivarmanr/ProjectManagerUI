@@ -14,7 +14,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <button mat-raised-button color="primary" type="search" (click)="openSearchProject()">Search</button>
+          <button mat-raised-button color="primary" type="search" (click)="openSearchProject()" [disabled]="isParentTask">Search</button>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="col-md-4 col-sm-12 top-padding">
-          <mat-checkbox formControlName="chkParentTask">Parent Task</mat-checkbox>
+          <mat-checkbox formControlName="chkParentTask" (change)="ActionParent($event)" >Parent Task</mat-checkbox>
           <!-- <mat-checkbox (click)="toggleDate()" formControlName="DateReqd">Set Start & End date</mat-checkbox> -->
         </div>
       </div>
@@ -49,7 +49,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <button mat-raised-button color="primary" type="search" (click)="openSearchParent()">Search</button>
+          <button mat-raised-button color="primary" type="search" (click)="openSearchParent()"  [disabled]="isParentTask">Search</button>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <button mat-raised-button color="primary" type="search" (click)="openSearchUser()">Search</button>
+          <button mat-raised-button color="primary" type="search" (click)="openSearchUser()"  [disabled]="isParentTask">Search</button>
         </div>
       </div>
 

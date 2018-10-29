@@ -1,3 +1,77 @@
-<p>
-  view-task works!
-</p>
+<div class="container cont-left-margin">
+  <!-- <div class="col-md-6 offset-md-3"> -->
+  <div class="page-title">View Task</div>
+
+  <!-- <input type="hidden" [(ngModel)]="searchTerm" /> -->
+
+  <form class="form-horizontal" [formGroup]="ViewTaskForm" #formDir="ngForm" novalidate autocomplete="off">
+    <div class="row">
+      
+      <!-- <div class="row"> -->
+
+      <div class="col-md-8">
+        <mat-form-field class="parm-width">
+          <input matInput placeholder="Project" formControlName="ProjectName" class="form-control" required readonly>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 search-manager">
+        <button mat-raised-button color="primary" type="search" (click)="openSearchProject()">Search</button>
+      </div>
+      <!-- </div> -->
+
+
+      <div class="col-md-8 button-row">
+
+            <mat-label class="label-sort">Sort Task By:</mat-label>
+        
+        <button mat-raised-button color="primary" (click)="sortList('StartDate')">Start Date</button>
+        <button mat-raised-button color="primary" (click)="sortList('EndDate')">End Date</button>
+        <button mat-raised-button color="primary" (click)="sortList('ProjectPriority')">Priority</button>
+        <button mat-raised-button color="primary" (click)="sortList('completedTasks')">Completed</button>
+      </div>
+    </div>
+
+  </form>
+
+  <div id="divTaskList">
+      <mat-list>
+        <mat-list-item class="pading-bottom" *ngFor="let task of TaskList | orderby: path : order">
+          <div class="col-md-8 col-sm-12 pading-bottom lst-bg-color">
+
+            <div class="col-md-12 top-padding">
+              <h4 mat-line class="lst-itm-header">Task</h4>
+              <p mat-line>{{task.Task}}</p>
+            </div>
+
+            <div class="row col-md-12">
+              <div class="row col-md-6">
+                <h4 mat-line class="lst-itm-header">Parent</h4>
+                <p mat-line>{{task.ParentTask}}</p>
+              </div>
+              <div class="row col-md-6">
+                <h4 mat-line class="lst-itm-header">Priority</h4>
+                <p mat-line>{{task.TaskPriority}}</p>
+              </div>
+            </div>
+            <div class="row col-md-12">
+              <div class="row col-md-6">
+                <h4 mat-line class="lst-itm-header">Start Date</h4>
+                <p mat-line>{{task.StartDate}}</p>
+              </div>
+              <div class="row col-md-6">
+                <h4 mat-line class="lst-itm-header">End Date</h4>
+                <p mat-line>{{task.EndDate}}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-2 col-sm-12 lst-item-button">
+            <button mat-raised-button color="primary" [routerLink]="['/edit-task',task.TaskId]"  class="btn-row edit-button">Edit</button>
+            <button mat-raised-button color="primary" (click)="endTask(taskId)" class="btn-row">End Task</button>
+          </div>
+          <!-- [routerLink]=['/edit-task', task.TaskId] -->
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
+</div>

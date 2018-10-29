@@ -62,19 +62,24 @@ export class SharedService {
   }
 
 
+
   //methods for tasks
   
-  getTaskList(){
-    console.log(this.baseUrl);
-    return this.http.get<Task[]>(this.baseUrl + '/GetAllTasks');
-  }
-
   addTask(task: Task) {
     console.log(task);
     return this.http.post(this.baseUrl + '/AddTask', task);
   }
 
-  
+  getTaskList(){
+    console.log(this.baseUrl);
+    return this.http.get<Task[]>(this.baseUrl + '/GetAllTasks');
+  }
+
+  getTaskListByProjId(projectId: number){
+    console.log(this.baseUrl);
+    return this.http.get<Task[]>(this.baseUrl + '/getTaskListByProjId/' + projectId);
+  }
+
   // getTaskById(id): Observable<Task> {
   //   return this.http.get<Task>(this.baseUrl+'/Get/'+id);
   // }
@@ -84,14 +89,22 @@ export class SharedService {
   //   return this.http.put(this.baseUrl+'/Update', task);
   // }
 
-  // endTask(id): Observable<Task> {
-  //   console.log(id);
-  //   return this.http.get<Task>(this.baseUrl+'/End/'+id);
-  // }
+  endTask(taskId): Observable<Task> {
+    console.log(taskId);
+    return this.http.get<Task>(this.baseUrl+'/End/'+taskId);
+  }
+
+  addParentTask(parentTask: Parent){
+    console.log(this.baseUrl);
+    console.log(parentTask);
+    return this.http.post(this.baseUrl + '/AddParentTask', parentTask);
+  }
 
   getParentList(){
     console.log(this.baseUrl);
     return this.http.get<Parent[]>(this.baseUrl + '/GetAllParentTasks');
   }
+
+  
 
 }

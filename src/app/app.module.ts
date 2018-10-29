@@ -15,7 +15,6 @@ import { SearchProjectComponent } from './UI/Common/search-project/search-projec
 import { SearchParentComponent } from './UI/Common/search-parent/search-parent.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +23,8 @@ import { SearchParentComponent } from './UI/Common/search-parent/search-parent.c
     OrderbyPipe,
     SearchUserComponent,
     SearchProjectComponent,
-    SearchParentComponent
+    SearchParentComponent,
+    
   ],
   imports: [
     BrowserModule,

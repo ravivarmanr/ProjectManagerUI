@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddProjectComponent } from './UI/add-project/add-project.component';
+
+import { AddProjectComponent } from 'src/app/UI/add-project/add-project.component';
 import { AddUserComponent } from 'src/app/UI/add-user/add-user.component';
 import { AddTaskComponent } from 'src/app/UI/add-task/add-task.component';
 import { ViewTaskComponent } from 'src/app/UI/view-task/view-task.component';
+import { EditTaskComponent } from 'src/app/UI/edit-task/edit-task.component';
 
 const routes: Routes = [
 
@@ -23,6 +25,10 @@ const routes: Routes = [
 {
     path:  'view-task',
     component:  ViewTaskComponent
+},
+{
+    path:  'edit-task/:taskId',
+    component:  EditTaskComponent
 }
 
 ];
@@ -32,4 +38,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [AddProjectComponent, AddUserComponent, AddTaskComponent, ViewTaskComponent]
+export const routingComponents = [AddProjectComponent, AddUserComponent, AddTaskComponent, ViewTaskComponent, EditTaskComponent]
