@@ -14,5 +14,6 @@ ProjectId: number;
 
 ParentTask: string;
 UserName: string;
+ProjectName: string;
 
 }

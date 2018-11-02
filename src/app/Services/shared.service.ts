@@ -80,18 +80,18 @@ export class SharedService {
     return this.http.get<Task[]>(this.baseUrl + '/getTaskListByProjId/' + projectId);
   }
 
-  // getTaskById(id): Observable<Task> {
-  //   return this.http.get<Task>(this.baseUrl+'/Get/'+id);
-  // }
+  getTaskById(taskId): Observable<Task> {
+    return this.http.get<Task>(this.baseUrl+'/GetTask/'+ taskId);
+  }
 
-  // updateTaskDetail(task: Task) {
-  //   console.log(task);
-  //   return this.http.put(this.baseUrl+'/Update', task);
-  // }
+  updateTaskDetail(task: Task) {
+    console.log(task);
+    return this.http.put(this.baseUrl+'/UpdateTask', task);
+  }
 
   endTask(taskId): Observable<Task> {
     console.log(taskId);
-    return this.http.get<Task>(this.baseUrl+'/End/'+taskId);
+    return this.http.get<Task>(this.baseUrl+'/EndTask/'+taskId);
   }
 
   addParentTask(parentTask: Parent){
