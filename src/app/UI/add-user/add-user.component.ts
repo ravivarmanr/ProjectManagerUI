@@ -27,7 +27,7 @@ export class AddUserComponent implements OnInit {
   }
 
   //for sorting
-  sortList(prop: string){
+  sortList(prop: string) {
     // console.log(prop);
     this.path = prop.split('.');
     this.order = this.order * (-1);
@@ -49,27 +49,13 @@ export class AddUserComponent implements OnInit {
     this.SubmitButton = "Add";
     this.getUserList();
     this.AddUserForm.reset();
-  }
-
-  editUser(user: User): void {
-    console.log(user);
-    this.SubmitButton = "Update";
-    this.buildAddForm();
-    this.setFormValues(user);
-  }
-
-  deleteUser(user: User): void {
-    console.log(user);
-    this.setFormValues(user);
-    this.AddUserForm.value.UserStatus = 'N';
-    this.updateUser(this.AddUserForm.value);
-    this.resetForm();
+    this.AddUserForm.controls['EmpId'].enable();
   }
 
   buildAddForm(): void {
     this.AddUserForm = this.formBuilder.group({
       UserId: [''],
-      FirstName: ['', Validators.required],
+      FirstName: new FormControl('', { validators: [Validators.required, Validators.minLength(3)] }),
       LastName: new FormControl('', Validators.required),
       EmpId: new FormControl('', {
         validators: [Validators.required,
@@ -95,12 +81,23 @@ export class AddUserComponent implements OnInit {
     })
   }
 
+  validate(employeeId: number) {
+    var isExistingId = this.userList.some(function (emplst) { return emplst.EmpId == employeeId });
+    return !isExistingId;
+  }
+
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.AddUserForm.invalid) {
       return;
     }
+
+    if (!this.validate(this.AddUserForm.value.EmpId)) {
+      alert('The entered Employee Id ' + this.AddUserForm.value.EmpId + ' already exists');
+      return;
+    }
+
     this.AddUserForm.value.UserStatus = 'Y';
     if (this.AddUserForm.value.UserId) {
 
@@ -112,28 +109,50 @@ export class AddUserComponent implements OnInit {
       console.log('Usr ID Blank');
       console.log(this.AddUserForm.value.UserId);
       this.addUser(this.AddUserForm.value);
-      
+
     }
-  
+
+  }
+
+  addUser(userValue: any) {
+    this.addUserService.addUser(this.AddUserForm.value)
+      .subscribe(data => {
+        console.log('added the data');
+        alert('The user have been added successfuly.');
+        this.resetForm();
+      });
+    return;
+  }
+
+  editUser(user: User): void {
+    console.log(user);
+    this.SubmitButton = "Update";
+    this.buildAddForm();
+    this.setFormValues(user);
+    this.AddUserForm.controls['EmpId'].disable();
   }
 
   updateUser(userValue: any) {
     this.addUserService.updateUser(userValue)
       .subscribe(data => {
         console.log('updated the data');
+        alert('The user have been updated successfuly.');
         this.resetForm();
       });
     return;
   }
 
-  addUser(userValue: any){
-    this.addUserService.addUser(this.AddUserForm.value)
-    .subscribe(data => {
-      // this.router.navigate(['view-task']);
-      console.log('added the data');
-      this.resetForm();
-      
-    });
+  deleteUser(user: User): void {
+    console.log(user);
+    this.setFormValues(user);
+    this.AddUserForm.value.UserStatus = 'N';
+
+    this.addUserService.updateUser(user)
+      .subscribe(data => {
+        console.log('deleted the data');
+        alert('The user have been deleted successfuly.');
+        this.resetForm();
+      });
     return;
   }
 

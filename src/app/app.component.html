@@ -1,15 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
+  <mat-toolbar-row role="heading">
     <span>{{ title }}</span>
   </mat-toolbar-row>
 
-  <mat-toolbar-row>
+  <mat-toolbar-row role="toolbar">
     <span>
-    <a [routerLink]="'/add-project'"> Add Project </a>
-    <a [routerLink]="'/add-task'"> Add Task </a>
-    <a [routerLink]="'/add-user'"> Add User </a>
-    <a [routerLink]="'/view-task'">View Task </a>
+    <a [routerLink]="'/add-project'" routerLinkActive="active-link"> Add Project </a>
+    <a [routerLink]="'/add-task'" routerLinkActive="active-link"> Add Task </a>
+    <a [routerLink]="'/add-user'" routerLinkActive="active-link"> Add User </a>
+    <a [routerLink]="'/view-task'" routerLinkActive="active-link">View Task </a>
   </span>
   
   </mat-toolbar-row>

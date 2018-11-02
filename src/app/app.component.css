@@ -6,9 +6,66 @@
     flex: 1 1 auto;
   }
 
-  mat-toolbar a {
+  .mat-toolbar a {
     display: inline-block;
     margin: 0 10px;
+    padding: 0px 10px;
     color: white;
     text-decoration: none;
   }
+
+  .mat-toolbar a:active{
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0px 10px;
+    /* color: rgb(4, 0, 255); */
+    text-decoration: none;
+    background-color: rgba(255, 0, 55, 0.301)
+  }
+
+  .mat-toolbar a:hover{
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0px 10px;
+    /* color: blue; */
+    text-decoration: none;
+    background-color: rgba(0, 17, 255, 0.418)  
+  }
+
+  .active-link{
+    background-color: blue;
+    color: whitesmoke
+  }
+
+  /* .mat-toolbar-row .a:active{
+    display: inline-block;
+    margin: 0 10px;
+    color: rgb(255, 251, 0);
+    text-decoration: none;
+  }
+
+  .mat-toolbar-row .a:hover{
+    display: inline-block;
+    margin: 0 10px;
+    color: rgb(21, 255, 0);
+    text-decoration: none;
+  } */
+
+  
+
+  /* .md-button:first-child:enabled{
+    background-color: #fff;
+  }
+  .md-button:first-child:hover:enabled{
+    background-color: blueviolet;
+  } */
+
+  /* .a {
+    text-decoration: none;
+    color: white;
+  } */
+
+  /* .a:hover,
+.a:active {
+  color: rgb(16, 73, 138);
+} */
