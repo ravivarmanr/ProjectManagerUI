@@ -16,6 +16,8 @@ export class SearchParentComponent implements OnInit {
 
   constructor(private dialogRef:MatDialogRef<SearchParentComponent>, private parentService: SharedService) { }
 
+  searchTerm : string;
+  
   ngOnInit() {
     this.getParentList();
   }

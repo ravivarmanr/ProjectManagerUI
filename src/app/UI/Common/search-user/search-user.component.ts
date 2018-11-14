@@ -21,6 +21,7 @@ export class SearchUserComponent implements OnInit {
     this.getUserList();
   }
 
+  
   getUserList() {
     this.userService.getUserList()
       .subscribe(data => {

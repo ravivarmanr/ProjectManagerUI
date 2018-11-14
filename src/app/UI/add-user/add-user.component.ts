@@ -33,7 +33,7 @@ export class AddUserComponent implements OnInit {
     this.order = this.order * (-1);
     return false;
   }
-
+  searchTerm : string;
   // convenience getter for easy access to form fields
   get formfields() { return this.AddUserForm.controls; }
 

@@ -12,6 +12,7 @@ import { Project } from 'src/app/Models/project';
 export class SearchProjectComponent implements OnInit {
 
   projectList: Project[];
+  searchTerm: string = undefined;
 
   constructor(private dialogRef: MatDialogRef<SearchProjectComponent>, private projectService: SharedService) { }
 

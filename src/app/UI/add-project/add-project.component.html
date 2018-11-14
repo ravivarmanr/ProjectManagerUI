@@ -9,9 +9,9 @@
 
       <mat-form-field>
         <input matInput placeholder="Project Name" formControlName="projectName" class="form-control" required maxlength="30">
-        <mat-error *ngIf="ProjectName?.required">
+        <!-- <mat-error *ngIf="projectName?.required">
           Project Name is required
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
 
       <div class="row">
@@ -38,9 +38,9 @@
       <div class="form-group col-md-4 col-sm-12">
         <label for="ProjectPriority">Priority:</label>
         <mat-slider min="0" max="30" step="1" id="ProjectPriority" formControlName="ProjectPriority" class="parm-width" thumbLabel></mat-slider>
-        <mat-error *ngIf="ProjectPriority?.min">
+        <!-- <mat-error *ngIf="ProjectPriority?.min">
           Priority is required
-        </mat-error>
+        </mat-error> -->
       </div>
 
       <div class="row">

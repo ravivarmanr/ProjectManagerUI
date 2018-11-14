@@ -74,3 +74,7 @@ background-color: aliceblue;
     margin-right: 8px;      
     padding: 7px
 }
+.minwidth{
+    min-width: 300px !important;
+    overflow-x: auto;
+}

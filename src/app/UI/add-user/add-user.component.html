@@ -8,28 +8,28 @@
     <div class="example-container">
       <mat-form-field>
         <input matInput placeholder="First Name" formControlName="FirstName" class="form-control" required maxlength="30">
-        <mat-error *ngIf="FirstName?.required">
+        <!-- <mat-error *ngIf="FirstName?.required">
           First Name is required
-        </mat-error>
+        </mat-error> -->
         <mat-error>
 
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Last Name" formControlName="LastName" class="form-control" required maxlength="30">
-        <mat-error *ngIf="LastName?.required">
+        <!-- <mat-error *ngIf="LastName?.required">
           Last Name is required
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
       <mat-form-field>
         <input matInput type="number" placeholder="Employee ID" formControlName="EmpId" class="form-control" required minlength="6"
           maxlength="6">
-        <mat-error *ngIf="EmpId?.required">
+        <!-- <mat-error *ngIf="EmpId?.required">
           Employee ID is required
         </mat-error>
         <mat-error *ngIf="EmpId?.minlength && !EmpId?.required">
           Employee Id needs to be 6 characters length
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
     </div>
 

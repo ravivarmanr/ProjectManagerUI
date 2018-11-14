@@ -47,22 +47,22 @@ order: number = 1; //1 asc and -1 desc;
 
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
-
+  searchTerm : string;
   // convenience getter for easy access to form fields
   get formfields() { return this.AddProjectForm.controls; }
 
   buildPorjectForm(): void {
     this.AddProjectForm = this.formBuilder.group({
       ProjectId: [''],
-      projectName: ['', Validators.required],
+      projectName: new FormControl('', {validators:[Validators.required, Validators.minLength(3)]}),
       DateReqd: new FormControl(false),
-      startDate: new FormControl('', Validators.required) ,
-      endDate: new FormControl('', Validators.required) ,
+      startDate: new FormControl({value: null, disabled: true}) ,
+      endDate: new FormControl({value: null, disabled: true}) ,
       ProjectPriority: new FormControl(0, Validators.min(1)),
       projectStatus: [''],
       AddDate: [''],
       UpdtDate: [''],
-      manager: new FormControl(''),
+      manager: new FormControl('', Validators.required),
       managerId: [''],
       taskCount: [0],
       completedTasks: [0],
@@ -170,6 +170,11 @@ order: number = 1; //1 asc and -1 desc;
     if (this.AddProjectForm.invalid) {
       return;
     }
+    if(!this.Validate()) {
+      alert('Project End Date should not be less than Start Date.');
+      return;
+    }
+    
     this.AddProjectForm.value.ProjectStatus = 'Y';
     this.AddProjectForm.value.ManagerId = this.selectedMgrId;
     
@@ -224,6 +229,15 @@ order: number = 1; //1 asc and -1 desc;
         this.resetForm();
       });
     return;
+  }
+
+  Validate(): boolean{
+    let projectInput = this.AddProjectForm.value;
+
+    if (projectInput.endDate < projectInput.startDate){
+      return false;
+    }
+    return true;
   }
 
   setDateReq(datReq: any): string {
