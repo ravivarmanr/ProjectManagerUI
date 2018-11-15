@@ -43,7 +43,7 @@ export class EditTaskComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private dialog: MatDialog, private formBuilder: FormBuilder, private taskService: SharedService, private route: ActivatedRoute, private router: Router) {  }
+  constructor(private dialog: MatDialog, private formBuilder: FormBuilder, private taskService: SharedService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {
@@ -58,22 +58,22 @@ export class EditTaskComponent implements OnInit {
 
     this.buildTaskForm();
 
-    this.sub = this.route.params.subscribe(params=>{
+    this.sub = this.route.params.subscribe(params => {
       this.taskId = + params['taskId'];
       this.loadTask();
     })
 
   }
 
-  loadTask(){
+  loadTask() {
     this.taskService.getTaskById(this.taskId)
-    .subscribe(task => {
-      this.currentTask = task;
-      this.loadForm();
-    });
+      .subscribe(task => {
+        this.currentTask = task;
+        this.loadForm();
+      });
   }
 
-  loadForm(){
+  loadForm() {
     this.EditTaskForm.patchValue({
       ProjectName: this.currentTask.ProjectName,
       Task: this.currentTask.Task,
@@ -85,7 +85,7 @@ export class EditTaskComponent implements OnInit {
     })
     this.selectedParentId = this.currentTask.ParentId
   }
-  
+
 
   buildTaskForm(): void {
     this.EditTaskForm = this.formBuilder.group({
@@ -125,12 +125,12 @@ export class EditTaskComponent implements OnInit {
     this.EditTaskForm.value.UpdtDate = new Date();
     this.EditTaskForm.value.TaskId = this.currentTask.TaskId;
 
-      if (this.EditTaskForm.value.TaskId) {
+    if (this.EditTaskForm.value.TaskId) {
 
-        console.log('task ID Not Blank');
-        this.UpdateTask(this.EditTaskForm.value);
-      }
-      
+      console.log('task ID Not Blank');
+      this.UpdateTask(this.EditTaskForm.value);
+    }
+
   }
 
   UpdateTask(taskValue: any) {
@@ -144,7 +144,7 @@ export class EditTaskComponent implements OnInit {
         this.router.navigateByUrl('/view-task');
       });
     return;
-  }  
+  }
 
   // convenience getter for easy access to form fields
   get formfields() { return this.EditTaskForm.controls; }
@@ -164,7 +164,7 @@ export class EditTaskComponent implements OnInit {
     })
   }
 
-  cancelForm(){
+  cancelForm() {
     this.EditTaskForm.reset();
     this.router.navigateByUrl('/view-task');
   }

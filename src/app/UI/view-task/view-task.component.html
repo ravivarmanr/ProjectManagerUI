@@ -39,22 +39,32 @@
     <div class="task-div" *ngFor="let task of TaskList | orderby: path : order">
       <table class="lst-bg-color task-table" cellspacing="15">
         <tr>
-          <td><b>Task:</b></td>
+          <td>
+            <b>Task:</b>
+          </td>
           <td colspan="4">{{task.Task}}</td>
         </tr>
         <tr>
-          <td><b>Parent:</b></td>
-          <td>{{task.ParentTask}}</td>
-          <td><b>Priority:</b></td>
+          <td>
+            <b>Parent:</b>
+          </td>
+          <td class="task-width">{{task.ParentTask}}</td>
+          <td>
+            <b>Priority:</b>
+          </td>
           <td>{{task.TaskPriority}}</td>
           <td>
             <button mat-raised-button color="primary" [routerLink]="['/edit-task',task.TaskId]" class="btn-row edit-button" [disabled]="task.TaskStatus=='N'">Edit</button>
           </td>
         </tr>
         <tr>
-          <td><b>Start Date:</b></td>
+          <td>
+            <b>Start Date:</b>
+          </td>
           <td>{{task.StartDate | date : 'MM/dd/yyyy'}}</td>
-          <td><b>End Date:</b></td>
+          <td>
+            <b>End Date:</b>
+          </td>
           <td>{{task.EndDate | date : 'MM/dd/yyyy'}}</td>
           <td>
             <button mat-raised-button color="primary" (click)="endTask(task.TaskId)" class="btn-row" [disabled]="task.TaskStatus=='N'">End Task</button>

@@ -41,8 +41,13 @@
 .lst-itm-header{
     width: 50%;
     font-size: 15px;
+    font-weight: bold;
 }
 
 .cont-left-margin{
     margin-left: 0;
 }
+
+.lst-bg-color{
+    background-color: aliceblue;
+    }

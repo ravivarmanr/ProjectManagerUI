@@ -14,23 +14,23 @@ describe('AddTaskComponent', () => {
   let component: AddTaskComponent;
   let fixture: ComponentFixture<AddTaskComponent>;
   let mockService = jasmine.createSpyObj(['GetAllTasks']);
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule
-              ],
-      declarations: [ AddTaskComponent  ,
+      ],
+      declarations: [AddTaskComponent,
         FilterPipe,
-        OrderbyPipe ],
-        schemas: [NO_ERRORS_SCHEMA],
-        providers: [
-          { provide: SharedService, useValue: mockService },
-          {provide: APP_BASE_HREF, useValue: '/' },
-          {provide: MatDialogRef, userValue: {}}
-        ]
+        OrderbyPipe],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: SharedService, useValue: mockService },
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: MatDialogRef, userValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(AddTaskComponent);
     component = fixture.componentInstance;

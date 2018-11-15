@@ -24,7 +24,7 @@ import { SearchParentComponent } from './UI/Common/search-parent/search-parent.c
     SearchUserComponent,
     SearchProjectComponent,
     SearchParentComponent,
-    
+
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ export class AddUserComponent implements OnInit {
     this.order = this.order * (-1);
     return false;
   }
-  
+
   // convenience getter for easy access to form fields
   get formfields() { return this.AddUserForm.controls; }
 
@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
         this.userList = data;
       })
   }
-
+  EmpId1: number;
   resetForm() {
     console.log('reset');
     this.SubmitButton = "Add";
@@ -150,7 +150,7 @@ export class AddUserComponent implements OnInit {
 
   deleteUser(user: User): void {
     console.log(user);
-    
+
     this.setFormValues(user);
 
     this.AddUserForm.value.UserStatus = 'N';

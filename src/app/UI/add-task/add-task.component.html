@@ -10,11 +10,12 @@
       <div class="row">
         <div class="col-md-8">
           <mat-form-field class="parm-width">
-            <input matInput placeholder="Project" formControlName="ProjectName" class="form-control" required  readonly>
+            <input matInput placeholder="Project" formControlName="ProjectName" class="form-control" required readonly>
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchProject()" [disabled]="isParentTask" value="Search" />
+          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchProject()"
+            [disabled]="isParentTask" value="Search" />
         </div>
       </div>
 
@@ -27,11 +28,11 @@
 
       <div class="row">
         <div class="col-md-4 col-sm-12 top-padding">
-          <mat-checkbox formControlName="chkParentTask" (change)="ActionParent($event)" >Parent Task</mat-checkbox>
+          <mat-checkbox formControlName="chkParentTask" (change)="ActionParent($event)">Parent Task</mat-checkbox>
           <!-- <mat-checkbox (click)="toggleDate()" formControlName="DateReqd">Set Start & End date</mat-checkbox> -->
         </div>
       </div>
-<br>
+      <br>
       <div class="form-group col-md-4 col-sm-12">
         <div class="row">
           <label for="TaskPriority">Priority:</label>
@@ -49,7 +50,8 @@
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchParent()" [disabled]="isParentTask" value="Search" />
+          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchParent()"
+            [disabled]="isParentTask" value="Search" />
         </div>
       </div>
 
@@ -78,7 +80,8 @@
           </mat-form-field>
         </div>
         <div class="col-md-4 search-manager">
-          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchUser()" [disabled]="isParentTask" value="Search" />
+          <input mat-raised-button color="primary" class="mat-raised-button mat-primary" type="button" (click)="openSearchUser()" [disabled]="isParentTask"
+            value="Search" />
         </div>
       </div>
 

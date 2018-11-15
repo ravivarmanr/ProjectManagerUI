@@ -23,7 +23,7 @@ describe('SharedService', () => {
   });
 
   afterEach(() => {
-httpTestingController.verify()
+    httpTestingController.verify()
   });
 
   describe(('#getTaskList'), () => {
@@ -34,9 +34,9 @@ httpTestingController.verify()
       expectedTasks = MockTask;
     });
 
-    it('Should be geting the list of all tasks', () =>{
+    it('Should be geting the list of all tasks', () => {
       projManagerService.getTaskList().subscribe(
-        taskList => expect(taskList).toEqual(expectedTasks,'should return the expected list of tasks'), fail
+        taskList => expect(taskList).toEqual(expectedTasks, 'should return the expected list of tasks'), fail
       );
 
       const req = httpTestingController.expectOne(projManagerService.baseUrl + '/GetAllTasks');

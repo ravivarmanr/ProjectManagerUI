@@ -19,15 +19,15 @@ describe('SearchUserComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule
-              ],
-      declarations: [ SearchUserComponent ,
-        FilterPipe ],
-        schemas: [NO_ERRORS_SCHEMA],
-        providers: [
-          { provide: SharedService, useValue: mockService },
-          {provide: APP_BASE_HREF, useValue: '/' },
-          {provide: MatDialogRef, userValue: {}}
-        ]
+      ],
+      declarations: [SearchUserComponent,
+        FilterPipe],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: SharedService, useValue: mockService },
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: MatDialogRef, userValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(SearchUserComponent);
     component = fixture.componentInstance;

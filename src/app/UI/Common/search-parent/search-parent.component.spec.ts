@@ -16,17 +16,17 @@ describe('SearchParentComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-FormsModule,
-ReactiveFormsModule,
-MatDialogModule
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogModule
       ],
-      declarations: [ SearchParentComponent,
-      FilterPipe ],
+      declarations: [SearchParentComponent,
+        FilterPipe],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: SharedService, useValue: mockService },
-        {provide: APP_BASE_HREF, useValue: '/' },
-        {provide: MatDialogRef, userValue: {}}
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: MatDialogRef, userValue: {} }
       ]
     });
     fixture = TestBed.createComponent(SearchParentComponent);

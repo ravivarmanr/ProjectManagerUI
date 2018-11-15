@@ -91,3 +91,7 @@ background-color: aliceblue;
 .task-div {
     width: 80%;
 }
+
+.task-width{
+    width: 250px;
+}

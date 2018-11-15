@@ -11,17 +11,17 @@ import { SelectionModel, DataSource } from '@angular/cdk/collections';
 })
 export class SearchUserComponent implements OnInit {
 
-  userList:  User[];
+  userList: User[];
   searchTerm: string = undefined;
 
 
-  constructor(private dialogRef: MatDialogRef<SearchUserComponent>, private userService: SharedService ) { }
+  constructor(private dialogRef: MatDialogRef<SearchUserComponent>, private userService: SharedService) { }
 
   ngOnInit() {
     this.getUserList();
   }
 
-  
+
   getUserList() {
     this.userService.getUserList()
       .subscribe(data => {
@@ -30,7 +30,7 @@ export class SearchUserComponent implements OnInit {
       });
   }
 
-  selectUser(user: User)  {
+  selectUser(user: User) {
     this.dialogRef.close(user);
   }
 

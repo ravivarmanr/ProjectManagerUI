@@ -21,16 +21,16 @@ describe('AddProjectComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule
-              ],
-      declarations: [ AddProjectComponent ,
+      ],
+      declarations: [AddProjectComponent,
         FilterPipe,
-        OrderbyPipe ],
-        schemas: [NO_ERRORS_SCHEMA],
-        providers: [
-          { provide: SharedService, useValue: mockService },
-          {provide: APP_BASE_HREF, useValue: '/' },
-          {provide: MatDialogRef, userValue: {}}
-        ]
+        OrderbyPipe],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: SharedService, useValue: mockService },
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: MatDialogRef, userValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(AddProjectComponent);
     component = fixture.componentInstance;

@@ -124,10 +124,10 @@ export class AddTaskComponent implements OnInit {
     this.ActivateControls(false);
   }
 
-  Validate(): boolean{
+  Validate(): boolean {
     let taskInput = this.AddTaskForm.value;
 
-    if (taskInput.endDate < taskInput.startDate){
+    if (taskInput.endDate < taskInput.startDate) {
       return false;
     }
     return true;
@@ -140,7 +140,7 @@ export class AddTaskComponent implements OnInit {
       return;
     }
 
-    if(!this.Validate()) {
+    if (!this.Validate()) {
       alert('Task End Date should not be less than Start Date.');
       return;
     }
