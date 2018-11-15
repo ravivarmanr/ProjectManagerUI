@@ -19,6 +19,8 @@ export class AddUserComponent implements OnInit {
   path: string[] = ['EmpId'];
   order: number = 1; //1 asc and -1 desc;
 
+  searchTerm: string = undefined;
+
   constructor(private formBuilder: FormBuilder, private addUserService: SharedService) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class AddUserComponent implements OnInit {
     this.order = this.order * (-1);
     return false;
   }
-  searchTerm : string;
+  
   // convenience getter for easy access to form fields
   get formfields() { return this.AddUserForm.controls; }
 
@@ -48,6 +50,7 @@ export class AddUserComponent implements OnInit {
     console.log('reset');
     this.SubmitButton = "Add";
     this.getUserList();
+    this.buildAddForm();
     this.AddUserForm.reset();
     this.AddUserForm.controls['EmpId'].enable();
   }
@@ -82,8 +85,11 @@ export class AddUserComponent implements OnInit {
   }
 
   validate(employeeId: number) {
-    var isExistingId = this.userList.some(function (emplst) { return emplst.EmpId == employeeId });
-    return !isExistingId;
+    if (this.SubmitButton == 'Add') {
+      var isExistingId = this.userList.some(function (emplst) { return emplst.EmpId == employeeId });
+      return !isExistingId;
+    }
+    return true;
   }
 
   onSubmit() {
@@ -144,10 +150,12 @@ export class AddUserComponent implements OnInit {
 
   deleteUser(user: User): void {
     console.log(user);
+    
     this.setFormValues(user);
+
     this.AddUserForm.value.UserStatus = 'N';
 
-    this.addUserService.updateUser(user)
+    this.addUserService.updateUser(this.AddUserForm.value)
       .subscribe(data => {
         console.log('deleted the data');
         alert('The user have been deleted successfuly.');

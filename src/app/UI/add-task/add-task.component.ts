@@ -124,6 +124,14 @@ export class AddTaskComponent implements OnInit {
     this.ActivateControls(false);
   }
 
+  Validate(): boolean{
+    let taskInput = this.AddTaskForm.value;
+
+    if (taskInput.endDate < taskInput.startDate){
+      return false;
+    }
+    return true;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -132,10 +140,15 @@ export class AddTaskComponent implements OnInit {
       return;
     }
 
+    if(!this.Validate()) {
+      alert('Task End Date should not be less than Start Date.');
+      return;
+    }
+
     this.AddTaskForm.value.AddDate = new Date();
 
     if (this.isParentTask) {
-      
+
       this.AddTaskForm.value.ProjectId = '';
       this.AddTaskForm.value.ParentId = '';
       this.AddTaskForm.value.UserId = '';
@@ -175,6 +188,7 @@ export class AddTaskComponent implements OnInit {
     this.taskService.addParentTask(this.AddTaskForm.value)
       .subscribe(data => {
         console.log('added the data');
+        alert('Parent task added successfully!');
         this.resetForm();
       });
     return;
@@ -189,6 +203,7 @@ export class AddTaskComponent implements OnInit {
     this.taskService.addTask(this.AddTaskForm.value)
       .subscribe(data => {
         console.log('added the data');
+        alert('Task added successfully!');
         this.resetForm();
       });
     return;

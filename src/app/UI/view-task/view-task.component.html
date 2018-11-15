@@ -6,7 +6,7 @@
 
   <form class="form-horizontal" [formGroup]="ViewTaskForm" #formDir="ngForm" novalidate autocomplete="off">
     <div class="row">
-      
+
       <!-- <div class="row"> -->
 
       <div class="col-md-8">
@@ -22,8 +22,8 @@
 
       <div class="col-md-8 button-row">
 
-            <mat-label class="label-sort">Sort Task By:</mat-label>
-        
+        <mat-label class="label-sort">Sort Task By:</mat-label>
+
         <button mat-raised-button color="primary" (click)="sortList('StartDate')">Start Date</button>
         <button mat-raised-button color="primary" (click)="sortList('EndDate')">End Date</button>
         <button mat-raised-button color="primary" (click)="sortList('ProjectPriority')">Priority</button>
@@ -32,11 +32,38 @@
     </div>
 
   </form>
-
+  <br />
   <div id="divTaskList">
-      <mat-list>
-        <mat-list-item class="pading-bottom" *ngFor="let task of TaskList | orderby: path : order">
-          <div class="col-md-8 col-sm-12 pading-bottom lst-bg-color minwidth">
+    <!-- <mat-list>
+        <mat-list-item *ngFor="let task of TaskList | orderby: path : order"> -->
+    <div class="task-div" *ngFor="let task of TaskList | orderby: path : order">
+      <table class="lst-bg-color task-table" cellspacing="15">
+        <tr>
+          <td><b>Task:</b></td>
+          <td colspan="4">{{task.Task}}</td>
+        </tr>
+        <tr>
+          <td><b>Parent:</b></td>
+          <td>{{task.ParentTask}}</td>
+          <td><b>Priority:</b></td>
+          <td>{{task.TaskPriority}}</td>
+          <td>
+            <button mat-raised-button color="primary" [routerLink]="['/edit-task',task.TaskId]" class="btn-row edit-button" [disabled]="task.TaskStatus=='N'">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td><b>Start Date:</b></td>
+          <td>{{task.StartDate | date : 'MM/dd/yyyy'}}</td>
+          <td><b>End Date:</b></td>
+          <td>{{task.EndDate | date : 'MM/dd/yyyy'}}</td>
+          <td>
+            <button mat-raised-button color="primary" (click)="endTask(task.TaskId)" class="btn-row" [disabled]="task.TaskStatus=='N'">End Task</button>
+          </td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <!-- <div class="col-md-8 col-sm-12 pading-bottom lst-bg-color minwidth">
 
             <div class="col-md-12 top-padding">
               <h4 mat-line class="lst-itm-header">Task</h4>
@@ -63,15 +90,15 @@
                 <p mat-line>{{task.EndDate}}</p>
               </div>
             </div>
-          </div>
-          
-          <div class="col-md-2 col-sm-12 lst-item-button">
+          </div> -->
+
+    <!-- <div class="col-md-2 col-sm-12 lst-item-button">
             <button mat-raised-button color="primary" [routerLink]="['/edit-task',task.TaskId]"  class="btn-row edit-button">Edit</button>
             <button mat-raised-button color="primary" (click)="endTask(taskId)" class="btn-row">End Task</button>
-          </div>
-          <!-- [routerLink]=['/edit-task', task.TaskId] -->
-          <mat-divider></mat-divider>
+          </div> -->
+    <!-- [routerLink]=['/edit-task', task.TaskId] -->
+    <!-- <mat-divider></mat-divider>
         </mat-list-item>
-      </mat-list>
-    </div>
+      </mat-list> -->
+  </div>
 </div>

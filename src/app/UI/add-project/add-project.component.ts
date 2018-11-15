@@ -22,6 +22,8 @@ export class AddProjectComponent implements OnInit {
 
   submitted = false;
   SubmitButton = "Add";
+
+  searchTerm: string = undefined;
   
 //sorting params
 path: string[] = ['StartDate'];
@@ -47,7 +49,7 @@ order: number = 1; //1 asc and -1 desc;
 
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
-  searchTerm : string;
+  
   // convenience getter for easy access to form fields
   get formfields() { return this.AddProjectForm.controls; }
 
@@ -103,9 +105,18 @@ order: number = 1; //1 asc and -1 desc;
   }
 
   toggleDate(){
+
+    console.log('toggle 1' +   this.AddProjectForm.value.DateReqd);
+
+    if(!this.AddProjectForm.value.DateReqd){
+      console.log('this one for null check')
+    }
+
+      // let DateReqd = (!this.AddProjectForm.value.DateReqd)?true:this.AddProjectForm.value.DateReqd;
       let DateReqd = this.AddProjectForm.value.DateReqd;
-      console.log(DateReqd);
-      if (!DateReqd){
+      
+      console.log('toggle 2' +  DateReqd);
+      if (DateReqd){
         let today = new Date();
         let nextDay = new Date();
         nextDay.setDate(nextDay.getDate() + 1);
@@ -131,6 +142,7 @@ order: number = 1; //1 asc and -1 desc;
     this.SubmitButton = "Add";
     this.getProjectList();
     this.AddProjectForm.reset();
+    this.toggleDate();
   }
 
   editProject(project: Project): void {
@@ -170,6 +182,7 @@ order: number = 1; //1 asc and -1 desc;
     if (this.AddProjectForm.invalid) {
       return;
     }
+    
     if(!this.Validate()) {
       alert('Project End Date should not be less than Start Date.');
       return;
@@ -210,7 +223,8 @@ order: number = 1; //1 asc and -1 desc;
 
     this.addProjectService.updateProject(this.AddProjectForm.value)
       .subscribe(data => {
-        console.log('added the data');
+        console.log('updated the data');
+        alert('Project has been updated successfully!');
         this.resetForm();
       });
     return;
@@ -226,6 +240,7 @@ order: number = 1; //1 asc and -1 desc;
     this.addProjectService.addProject(this.AddProjectForm.value)
       .subscribe(data => {
         console.log('added the data');
+        alert('Project has been added successfully!');
         this.resetForm();
       });
     return;

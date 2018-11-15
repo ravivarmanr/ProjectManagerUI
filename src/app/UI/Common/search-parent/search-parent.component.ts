@@ -13,16 +13,15 @@ import { Parent } from 'src/app/Models/parent';
 export class SearchParentComponent implements OnInit {
 
   parentList: Parent[];
+  searchTerm: string = undefined;
 
-  constructor(private dialogRef:MatDialogRef<SearchParentComponent>, private parentService: SharedService) { }
+  constructor(private dialogRef: MatDialogRef<SearchParentComponent>, private parentService: SharedService) { }
 
-  searchTerm : string;
-  
   ngOnInit() {
     this.getParentList();
   }
 
-  getParentList(){
+  getParentList() {
     this.parentService.getParentList()
       .subscribe(data => {
         this.parentList = data;
@@ -30,7 +29,7 @@ export class SearchParentComponent implements OnInit {
       });
   }
 
-  selectParent(parent: Parent){
+  selectParent(parent: Parent) {
     this.dialogRef.close(parent);
   }
 

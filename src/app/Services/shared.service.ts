@@ -91,7 +91,7 @@ export class SharedService {
 
   endTask(taskId): Observable<Task> {
     console.log(taskId);
-    return this.http.get<Task>(this.baseUrl+'/EndTask/'+taskId);
+    return this.http.put<Task>(this.baseUrl+'/EndTask/'+taskId, null);
   }
 
   addParentTask(parentTask: Parent){

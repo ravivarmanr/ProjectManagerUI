@@ -3,7 +3,7 @@
 <div class="container cont-left-margin">
   <!-- <div class="col-md-6 offset-md-3"> -->
   <div class="page-title">Add Project</div>
-  <form class="form-horizontal" [formGroup]="AddProjectForm" #formDir="ngForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+  <form class="form-horizontal" [formGroup]="AddProjectForm" #formDir="ngForm" novalidate autocomplete="off">
 
     <div class="example-container">
 
@@ -16,7 +16,7 @@
 
       <div class="row">
         <div class="col-md-4 col-sm-12 top-padding">
-          <mat-checkbox (click)="toggleDate()" formControlName="DateReqd">Set Start & End date</mat-checkbox>
+          <mat-checkbox (change)="toggleDate()" formControlName="DateReqd">Set Start & End date</mat-checkbox>
         </div>
 
         <div class="col-md-4 col-sm-12">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="button-row">
-      <button mat-raised-button color="primary" type="submit">{{SubmitButton}}</button>
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">{{SubmitButton}}</button>
       <button mat-raised-button color="primary" type="reset" (click)="resetForm()">Reset</button>
     </div>
 
@@ -100,11 +100,11 @@
           <div class="row col-md-12">
             <div class="row col-md-6">
               <h4 mat-line class="lst-itm-header">Start Date</h4>
-              <p mat-line>{{project.StartDate}}</p>
+              <p mat-line>{{project.StartDate | date : 'MM/dd/yyyy'}}</p>
             </div>
             <div class="row col-md-6">
               <h4 mat-line class="lst-itm-header">End Date</h4>
-              <p mat-line>{{project.EndDate}}</p>
+              <p mat-line>{{project.EndDate | date : 'MM/dd/yyyy'}}</p>
             </div>
           </div>
         </div>

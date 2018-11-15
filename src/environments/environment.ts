@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl:'http://localhost:61781'
-  apiUrl: 'http://localhost:8012/ProjectManagerWebApi'
+  apiUrl:'http://localhost:61781'
+  // apiUrl: 'http://172.18.2.198:8072/ProjectManagerWebApi'
 };
 
 /*

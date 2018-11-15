@@ -78,3 +78,16 @@ background-color: aliceblue;
     min-width: 300px !important;
     overflow-x: auto;
 }
+
+.task-table {
+    width: 100%;
+}
+
+.task-table th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.task-div {
+    width: 80%;
+}
